@@ -1,0 +1,11 @@
+#include<iostream>
+//srm 195 div 2
+using namespace std;
+class Rounder{
+public:
+    int round(int n, int b){
+        int dim = n/b;
+        int a = dim*b;
+        int c = (dim+1)*b;
+        return (n-a)>=(c-n)? c: a;
+    }
