@@ -1,0 +1,30 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+using namespace std;
+//srm 366 div 2
+int sum_of_digits(string s){
+    int sum = 0;
+    for(int i = 0; i<s.length(); i++)
+        if(s[i]>='0'&&s[i]<='9')
+            sum += (s[i]-'0');
+    return sum;
+}
+bool compare_number(const string &s1, const string &s2){
+    
+    if(s1.length()!=s2.length())
+        return s1.length()<s2.length();
+    
+    if(sum_of_digits(s1)!=sum_of_digits(s2))
+        return sum_of_digits(s1)<sum_of_digits(s2);
+    
+    return s1.compare(s2)<0;
+}
+class SerialNumbers{
+public:
+    vector<string> sortSerials(vector<string> SerialNumbers){
+        sort(SerialNumbers.begin(), SerialNumbers.end(), compare_number);
+        return SerialNumbers;
+    }
+};
