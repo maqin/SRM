@@ -1,0 +1,29 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+//srm 612 div 2
+class EmotionsDiv2{
+public:
+    int printSmiles(int smiles){
+        vector<pair<int,int> > state;
+        state.push_back(make_pair(1,1));
+        int start = 0;
+        int stop = 1;
+        int level = 1;
+        while(stop>start){
+            int nextLevel = 0;
+            level ++;
+            for(; start<stop; start++){
+                int a = state[start].first;
+                int b = state[start].second;
+                state.push_back(make_pair(a+b,b));
+                state.push_back(make_pair(a,a));
+                if(a+b==smiles)
+                    return level;
+                nextLevel += 2;
+            }
+            stop += nextLevel;
+        }
+        return level;
+    }
+};
