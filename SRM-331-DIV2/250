@@ -1,0 +1,23 @@
+public class SantaGifts {
+    /*public static void main(String[] args){
+        
+    }*/
+    public String[] distribute(String[] gifts, int N){
+        int k = 0;
+        String[] res = new String[N];
+        int len = N*4;
+        for(int i = 0; i<N; i++)
+            res[i]="";
+        for(int i = 0; i<gifts.length && i<len;i++){
+            int t = k%N;
+            if(k<N) {
+                res[t] = gifts[i];
+            }
+            else
+                res[t] += " " + gifts[i];
+                
+            k++;
+        }
+        return res;
+    }
+}
